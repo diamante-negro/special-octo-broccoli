@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegante Oculta</title>
+    <!-- Incluye el CDN de Tailwind CSS para un estilo moderno y responsivo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Importa una fuente elegante de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos personalizados para el cuerpo y los contenedores */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1A232F; /* Azul medianoche para un fondo elegante */
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Estilo para el menú de navegación fijo */
+        .nav-link {
+            transition: all 0.2s ease-in-out;
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: #d4af37;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: width 0.2s ease-in-out;
+        }
+        .nav-link.active::after,
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        /* Estilo para la imagen circular */
+        .diamond-image {
+            border-radius: 9999px; /* Utiliza un valor alto para un círculo perfecto */
+            object-fit: cover; /* Recorta la imagen para que quepa en el círculo sin distorsionarse */
+            border: 3px solid #d4af37; /* Borde dorado alrededor de la imagen */
+        }
+    </style>
+</head>
+<body class="text-gray-200 antialiased leading-relaxed">
+    <!-- Menú de Navegación -->
+    <!-- Este menú es fijo en la parte superior para facilitar la navegación -->
+    <nav class="sticky top-0 z-50 bg-[#1A232F] bg-opacity-90 backdrop-blur-sm shadow-xl py-4">
+        <div class="container mx-auto px-6 flex justify-center">
+            <ul class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm sm:text-base text-gray-300 font-medium">
+                <li><a href="#" data-target="poema-1" class="nav-link active text-[#d4af37]">Ecos de un amor eterno</a></li>
+                <li><a href="#" data-target="poema-2" class="nav-link">Ecuación de Amor</a></li>
+                <li><a href="#" data-target="poema-3" class="nav-link">Arena en los Libros</a></li>
+                <li><a href="#" data-target="poema-4" class="nav-link">Regreso a Clases</a></li>
+                <li><a href="#" data-target="poema-5" class="nav-link">El Mate del Corazón</a></li>
+                <li><a href="#" data-target="poema-6" class="nav-link">La sombra del recuerdo</a></li>
+                <li><a href="#" data-target="poema-7" class="nav-link">La Conquista del Corazón</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container mx-auto max-w-2xl px-6 py-12 sm:py-20">
+        <!-- Título principal de la colección (visible siempre) -->
+        <header class="text-center mb-12">
+            <!-- Título principal -->
+            <h1 class="text-4xl sm:text-5xl font-bold text-[#d4af37]">Poesía del Diamante Negro</h1>
+            <!-- Imagen de diamante en forma de círculo debajo del título -->
+            <div class="flex justify-center mt-4">
+                <img src="20250511_1929_image.png" alt="Dibujo de un diamante negro" class="diamond-image h-28 w-28 sm:h-32 sm:w-32">
+            </div>
+            <p class="mt-4 text-xl font-light italic text-gray-400">Una elegancia en versos</p>
+        </header>
+
+        <!-- Contenedor para los poemas, cada uno se mostrará o se ocultará con JavaScript -->
+        <main id="poem-container">
+            <!-- Poema 1: Ecos de un amor eterno -->
+            <section id="poema-1" class="poem-section bg-[#263238] p-8 sm:p-12 rounded-xl shadow-lg mb-12">
+                <h2 class="text-3xl font-bold text-center mb-0 text-[#d4af37]">Ecos de un amor eterno</h2>
+                <p class="text-center text-gray-400 text-sm italic mt-2">Autor: El Diamante Negro</p>
+                <div class="poem-text text-lg space-y-6 mt-4">
+                    <p>Sin importar la distancia ni el abismo,<br>
+                        mi amor por ti florece como lirio en el vacío.<br>
+                        En cada latido llevo un fragmento de tu luz,<br>
+                        un fuego que el tiempo no puede consumir.</p>
+                    <p>Recuerdos susurran entre los vientos,<br>
+                        risas y miradas que el alma sostiene.<br>
+                        Un rompecabezas sin final ni horizonte,<br>
+                        cada pieza un eco de lo que fue amor puro.</p>
+                    <p>Aunque el silencio reine y la ausencia grite,<br>
+                        mi amor camina libre, como brisa que acaricia.<br>
+                        No te poseo, más en mi espíritu moras,<br>
+                        cual estrella que ilumina un cielo desolado.</p>
+                    <p>Las promesas ahora son sombras vivientes,<br>
+                        pero no apagan la llama que en mí persiste.<br>
+                        Y si algún día las almas vuelven a cruzarse,<br>
+                        será destino, será esperanza, será infinito.</p>
+                </div>
+            </section>
+
+            <!-- Poema 2: Ecuación de Amor -->
+            <!-- Se oculta por defecto con el estilo 'display: none' -->
+            <section id="poema-2" class="poem-section bg-[#263238] p-8 sm:p-12 rounded-xl shadow-lg mb-12" style="display: none;">
+                <h2 class="text-3xl font-bold text-center mb-0 text-[#d4af37]">Ecuación de Amor</h2>
+                <p class="text-center text-gray-400 text-sm italic mt-2">Autor: El Diamante Negro</p>
+                <div class="poem-text text-lg space-y-6 mt-4">
+                    <p>Entre fórmulas y tubos de ensayo<br>
+                        descubrí que el misterio más grande<br>
+                        no es el origen del universo,<br>
+                        sino el modo en que tus ojos<br>
+                        desvían la luz de mi razón.</p>
+                    <p>He buscado en la genética<br>
+                        el secreto de tu risa,<br>
+                        y en la física cuántica<br>
+                        la probabilidad de este encuentro,<br>
+                        pero ninguna ley explica<br>
+                        cómo tu voz altera mi constante vital.</p>
+                    <p>Eres mi hipótesis favorita,<br>
+                        mi variable independiente,<br>
+                        la reacción inesperada<br>
+                        que desborda mis experimentos.</p>
+                    <p>Te amo con la precisión<br>
+                        de un microscopio que revela<br>
+                        la belleza en lo invisible,<br>
+                        y con la pasión de un átomo<br>
+                        que sueña con fusionarse.</p>
+                    <p>No hay fórmula que resuma<br>
+                        la magnitud de mi deseo,<br>
+                        ni teoría que prediga<br>
+                        la órbita de mis pensamientos<br>
+                        cuando tú eres el centro de mi universo.</p>
+                    <p>Así, con el rigor de un científico<br>
+                        y la emoción de un poeta,<br>
+                        te confieso:<br>
+                        mi amor por ti<br>
+                        es la única ley<br>
+                        que no puedo comprender.</p>
+                </div>
+            </section>
+
+            <!-- Poema 3: Arena en los Libros -->
+            <section id="poema-3" class="poem-section bg-[#263238] p-8 sm:p-12 rounded-xl shadow-lg mb-12" style="display: none;">
+                <h2 class="text-3xl font-bold text-center mb-0 text-[#d4af37]">Arena en los Libros</h2>
+                <p class="text-center text-gray-400 text-sm italic mt-2">Autor: El Diamante Negro</p>
+                <div class="poem-text text-lg space-y-6 mt-4">
+                    <p>El tiempo es algo tan extraño,<br>
+                        para un estudiante en su andar,<br>
+                        se desliza entre libros y sueños,<br>
+                        como arena que no deja de escapar.</p>
+                    <p>Las horas son ríos que fluyen,<br>
+                        a veces lentos, a veces veloz,<br>
+                        en la noche, el reloj murmura,<br>
+                        mientras el café se vuelve su voz.</p>
+                    <p>Un día es un mar de tareas,<br>
+                        otro, un susurro fugaz,<br>
+                        los exámenes acechan como sombras,<br>
+                        y el descanso se vuelve un compás.</p>
+                    <p>El tiempo es un amigo y un enemigo,<br>
+                        un aliado que sabe esperar,<br>
+                        pero también un ladrón sigiloso,<br>
+                        que roba momentos sin piedad.</p>
+                </div>
+            </section>
+
+            <!-- Poema 4: Regreso a Clases -->
+            <section id="poema-4" class="poem-section bg-[#263238] p-8 sm:p-12 rounded-xl shadow-lg mb-12" style="display: none;">
+                <h2 class="text-3xl font-bold text-center mb-0 text-[#d4af37]">Regreso a Clases</h2>
+                <p class="text-center text-gray-400 text-sm italic mt-2">Autor: El Diamante Negro</p>
+                <div class="poem-text text-lg space-y-6 mt-4">
+                    <p>El verano se va, como un susurro en el viento,<br>
+                        las risas se apagan, se disuelven en el tiempo.<br>
+                        Las hojas en los árboles comienzan a dorarse,<br>
+                        y en mi corazón un anhelo empieza a hacerse.</p>
+                    <p>La mochila lista, pesada de libros,<br>
+                        los días de sol se vuelven un abrigo.<br>
+                        Pero en mi pecho hay una sombra que pesa,<br>
+                        regresar a la escuela no es lo que se expresa.</p>
+                    <p>En las aulas brillan luces, expectantes y frías,<br>
+                        las risas ajenas se mezclan con las mías.<br>
+                        Sin embargo, mi mente se escapa volando,<br>
+                        a jardines de sueños donde el sol va brillando.</p>
+                    <p>Los amigos se encuentran, charlan de aventuras,<br>
+                        mientras yo en mi mundo busco las locuras.<br>
+                        Las tareas me esperan, como olas del mar,<br>
+                        pero mi corazón preferiría soñar.</p>
+                    <p>¡Oh, regreso a clases! Un ciclo sin fin,<br>
+                        donde el tiempo se juega y se siente tan gris.<br>
+                        Mas en el rincón de mi alma perdida,<br>
+                        una chispa de esperanza aún brilla encendida.</p>
+                    <p>Quizás en la rutina, entre textos y risas,<br>
+                        descubra pequeñas alegrías precisas.<br>
+                        Así, aunque el deseo de quedarme persista,<br>
+                        tal vez el regreso no sea tan egoísta.</p>
+                    <p>Con cada paso incierto, con cada nuevo día,<br>
+                        encontraré mi camino, mi propia melodía.<br>
+                        Y aunque hoy no lo quiera, mi voz se levantará,<br>
+                        porque en el regreso, también se puede soñar.</p>
+                </div>
+            </section>
+
+            <!-- Poema 5: El Mate del Corazón -->
+            <section id="poema-5" class="poem-section bg-[#263238] p-8 sm:p-12 rounded-xl shadow-lg mb-12" style="display: none;">
+                <h2 class="text-3xl font-bold text-center mb-0 text-[#d4af37]">El Mate del Corazón</h2>
+                <p class="text-center text-gray-400 text-sm italic mt-2">Autor: El Diamante Negro</p>
+                <div class="poem-text text-lg space-y-6 mt-4">
+                    <p>En el tablero de mi alma, tú eres la jugada maestra,<br>
+                        una presencia sutil que avanza con gracia y destreza.<br>
+                        Cada movimiento tuyo despierta mi estrategia secreta,<br>
+                        y en tu mirada descubro la partida más bonita.</p>
+                    <p>Soy el rey que busca refugio en tu sonrisa,<br>
+                        el alfil que se desliza con esperanza y prisa.<br>
+                        En cada partida, en cada jugada, tu amor me conquista,<br>
+                        y en este juego de corazones, tú eres mi pieza más lista.</p>
+                    <p>El jaque mate se vuelve dulce cuando estás cerca,<br>
+                        porque en el amor, como en ajedrez, la pasión no se resta.<br>
+                        Y aunque el tablero sea vasto, mi deseo no se desgasta,<br>
+                        porque en tu amor, mi reina, encuentro mi mejor jugada.</p>
+                </div>
+            </section>
+
+            <!-- Poema 6: En la sombra de un recuerdo -->
+            <section id="poema-6" class="poem-section bg-[#263238] p-8 sm:p-12 rounded-xl shadow-lg mb-12" style="display: none;">
+                <h2 class="text-3xl font-bold text-center mb-0 text-[#d4af37]">La sombra del recuerdo</h2>
+                <p class="text-center text-gray-400 text-sm italic mt-2">Autor: El Diamante Negro</p>
+                <div class="poem-text text-lg space-y-6 mt-4">
+                    <p>En la sombra de un recuerdo ando,<br>
+                        donde tu risa fue mi hogar,<br>
+                        hoy los ecos del pasado clamo,<br>
+                        y en mi pecho vuelves a vibrar.</p>
+                    <p>Te dejé, en un arranque de locura,<br>
+                        pensando que el tiempo sanaría,<br>
+                        pero cada día es una tortura,<br>
+                        la soledad pesa, duele y se enfría.</p>
+                    <p>Tus ojos, luceros que me guiaban,<br>
+                        tu voz, un susurro en el viento,<br>
+                        cada instante sin ti, desgarran,<br>
+                        como olas que rompen en lamento.</p>
+                    <p>Me arrepiento, lo grita mi alma,<br>
+                        de haber apagado nuestra canción,<br>
+                        hoy reconozco que solo en tu calma<br>
+                        encuentro la paz, la razón.</p>
+                    <p>Aún te amo, con la fuerza de mil,<br>
+                        cada latido lleva tu nombre,<br>
+                        vuelve a mí, amor, yo soy el perfil<br>
+                        de un corazón que a ti se asombre.</p>
+                    <p>Si el destino nos diera otra chance,<br>
+                        te prometo cuidar lo que es nuestro,<br>
+                        no dejaré que el miedo me lance<br>
+                        a un abismo oscuro, sin maestro.</p>
+                    <p>Así que aquí estoy, con esta verdad,<br>
+                        esperando que un día comprendas,<br>
+                        que en mis brazos hallarás la serenidad,<br>
+                        y juntos reviviremos nuestras sendas.</p>
+                </div>
+            </section>
+
+            <section id="poema-7" class="poem-section bg-[#263238] p-8 sm:p-12 rounded-xl shadow-lg mb-12" style="display: none;">
+                <h2 class="text-3xl font-bold text-center mb-0 text-[#d4af37]">La Conquista del corazón</h2>
+                <p class="text-center text-gray-400 text-sm italic mt-2">Autor: El Diamante Negro</p>
+                <div class="poem-text text-lg space-y-6 mt-4">
+                    <p>En el trono de marfil, él, el rey, pensaba en<br>
+                    cómo ganar la batalla más difícil, sin espada ni<br>
+                    estandarte. Su reino era grande y fuerte, más<br>
+                    su alma quería tomar el corazón de la reina, un<br>
+                    arte más allá del arte.</p>
+                    <p>Ella, con su corona de oro, desde su torre de<br>
+                    cristal, observaba al soberano con una dulce<br>
+                    sonrisa. No deseaba joyas ni poder, sino un<br>
+                    gesto de verdad, una palabra sincera que su<br>
+                    alma acariciara, sin prisa.</p>
+                    <p>Él le envió un ejército de rosas, rojas como el<br>
+                    rubí, y ella le devolvió una carta, con tinta de la<br>
+                    luna, escrita. "No es con flores que se gana mi<br>
+                    amor, mi noble señor", decía así, "sino con la<br>
+                    ternura de un gesto, de una mirada bendita".</p>
+                    <p>El rey, dejando su cetro, se sentó a los pies del<br>
+                    roble, y le contó a la reina la historia de su<br>
+                    primera estrella. Ella, a su lado, susurró un<br>
+                    secreto, humilde y noble, que solo el viento<br>
+                    pudo oír, una confesión bella. </p>
+                    <p>Así, sin batallas ni escudos, con versos en vez<br>
+                    de arcos, se conquistaron el uno al otro, en un<br>
+                    jardín tranquilo. Descubrieron que el amor no<br>
+                    se gana con grandes barcos, sino con la<br>
+                    simpleza de ser, de alma a alma, tan solo un<br>
+                    hilo.</p>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Pie de página prominente y elevado -->
+        <div class="mt-12 text-center">
+            <p class="text-xl font-bold text-[#d4af37]">El Diamante Negro</p>
+        </div>
+    </div>
+
+    <script>
+        // Obtener todos los enlaces del menú y todas las secciones de los poemas
+        const navLinks = document.querySelectorAll('.nav-link');
+        const poemSections = document.querySelectorAll('.poem-section');
+
+        // Agregar un 'event listener' a cada enlace del menú
+        navLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                // Prevenir el comportamiento predeterminado del enlace
+                event.preventDefault();
+                
+                // Remover la clase 'active' de todos los enlaces y el color especial
+                navLinks.forEach(item => {
+                    item.classList.remove('active', 'text-[#d4af37]');
+                });
+
+                // Ocultar todas las secciones de poemas
+                poemSections.forEach(section => {
+                    section.style.display = 'none';
+                });
+
+                // Obtener el ID del poema objetivo del atributo 'data-target'
+                const targetId = link.getAttribute('data-target');
+                const targetPoem = document.getElementById(targetId);
+
+                // Mostrar la sección del poema correspondiente
+                if (targetPoem) {
+                    targetPoem.style.display = 'block';
+                }
+
+                // Agregar la clase 'active' y el color al enlace que se hizo clic
+                link.classList.add('active', 'text-[#d4af37]');
+            });
+        });
+    </script>
+</body>
+</html>
+
+
